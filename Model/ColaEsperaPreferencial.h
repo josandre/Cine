@@ -1,0 +1,14 @@
+//
+// Created by Jocselyn Aguilar on 11/11/22.
+//
+
+#ifndef PROYECTO1CINE_COLAESPERAPREFERENCIAL_H
+#define PROYECTO1CINE_COLAESPERAPREFERENCIAL_H
+
+
+class ColaEsperaPreferencial {
+
+};
+
+
+#endif //PROYECTO1CINE_COLAESPERAPREFERENCIAL_H

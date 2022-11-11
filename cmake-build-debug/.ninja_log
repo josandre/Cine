@@ -1,0 +1,7 @@
+# ninja log v5
+1	50	1668197886158526438	build.ninja	71d1578de3f9fbc7
+2	519	1668197323712087598	CMakeFiles/proyecto1Cine.dir/Controller/Client.cpp.o	d6fd87b0401d9c3b
+2	354	1668197007211422804	CMakeFiles/proyecto1Cine.dir/Controller/Sit.cpp.o	27d9317b13bc6d3f
+1	231	1668197376007229709	CMakeFiles/proyecto1Cine.dir/main.cpp.o	85e2ea1a7b25baa1
+1	239	1668197350830017299	CMakeFiles/proyecto1Cine.dir/Controller/ListaDoblePreferencial.cpp.o	8d31a9be515ad745
+231	263	1668197376041020443	proyecto1Cine	3a5c2a89def1ccee
