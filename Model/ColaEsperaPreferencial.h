@@ -6,7 +6,23 @@
 #define PROYECTO1CINE_COLAESPERAPREFERENCIAL_H
 
 
+#include "Nodo.h"
+
 class ColaEsperaPreferencial {
+public:
+    explicit ColaEsperaPreferencial();
+    void insertClient(Client);//lista simple
+    void showLine();
+    void atender();
+    Nodo *getFront();
+    Nodo *getFinal();
+    void setFront(Nodo *);
+    void setFinal(Nodo *);
+
+private:
+    int longitud;
+    Nodo *front;
+    Nodo *final;
 
 };
 

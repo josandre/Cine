@@ -3,6 +3,7 @@
 //
 
 #include "../Model/ListaDoblePreferencial.h"
+#include "../Model/ColaEsperaPreferencial.h"
 
 ListaDoblePreferencial::ListaDoblePreferencial() {
     this->head = nullptr;
@@ -12,13 +13,13 @@ ListaDoblePreferencial::ListaDoblePreferencial() {
 
 void ListaDoblePreferencial::initialize() {
     int position = 9;
-    setHead(new Sit());
+    setHead(new Nodo());
     this->head->setPosition(position);
     int acum = 1;
 
     while (acum < lenght){
         position --;
-        Sit *sit = new Sit();
+        Nodo *sit = new Nodo();
         sit->setPosition(position);
         sit->setNext(this->head);
         this->head->setBack(sit);
@@ -29,40 +30,54 @@ void ListaDoblePreferencial::initialize() {
 }
 
 void ListaDoblePreferencial::showSpots(){
-    Sit *aux = this->head;
+    Nodo *aux = getHead();
     while (aux != nullptr){
-        cout << aux->getData().toString() <<  aux->getPosition() << endl;
+        cout << aux->getData()->toString() <<  aux->getPosition() << endl;
         aux = aux->getNext();
     }
-
 }
 
-void ListaDoblePreferencial::showSits() {
-
+void ListaDoblePreferencial::showSpotsAvailable() {
+    Nodo *aux = getHead();
+    while (aux != nullptr){
+        if(aux->dataIsEmpty(aux)){
+            cout << aux->getPosition() << endl;
+        }
+        aux = aux->getNext();
+    }
 }
 
-Sit ListaDoblePreferencial::getHead() {
-    return this->getHead();
+
+Nodo *ListaDoblePreferencial::getHead() {
+    return this->head;
 }
 
-void ListaDoblePreferencial::setHead(Sit *client) {
+void ListaDoblePreferencial::setHead(Nodo *client) {
     this->head = client;
 }
 
 bool ListaDoblePreferencial::insertClient(Client client, int position) {
-    Sit *aux = this->head;
+    Nodo *aux = this->head;
 
     while (aux != nullptr){
         if(aux->getPosition() == position && validateSpot(position)){
             aux->setData(client);
             aux->setStatus(false);
-            setAvailable(available - 1);
+            setAvailable(getAvailable() - 1);
             return true;
         }
         aux = aux->getNext();
     }
     return false;
+}
 
+void ListaDoblePreferencial::insertInLine(int answer, Client client) {
+    ColaEsperaPreferencial  *espera = new ColaEsperaPreferencial();
+    Nodo *newNodo = new Nodo(client);
+
+    if(answer == 1 && getAvailable() == 0){
+        espera->insertClient(client);
+    }
 }
 
 void ListaDoblePreferencial::setAvailable(int amount){
@@ -73,20 +88,8 @@ int ListaDoblePreferencial::getAvailable() {
     return this->available;
 }
 
-void ListaDoblePreferencial::insertEnd(Client client, int position) {
-    Sit *newClient = new Sit(client);
-    Sit *aux = this->head;
-
-    while (aux->getNext() != nullptr){
-        aux->setNext(aux->getNext());
-    }
-    aux->setNext(newClient);
-    newClient->setBack(aux);
-
-}
-
 bool ListaDoblePreferencial::validateSpot(int postion) {
-    Sit *aux = this->head;
+    Nodo *aux = this->head;
     while (aux != nullptr){
         if(postion == aux->getPosition() && aux->getStatus()){
             return true;

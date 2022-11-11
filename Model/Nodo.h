@@ -2,27 +2,27 @@
 // Created by Jocselyn Aguilar on 11/11/22.
 //
 
-#ifndef PROYECTO1CINE_SIT_H
-#define PROYECTO1CINE_SIT_H
+#ifndef PROYECTO1CINE_NODO_H
+#define PROYECTO1CINE_NODO_H
 using namespace std;
 #include "Client.h"
 
-class Sit {
+class Nodo {
 public:
 
-    Sit(Client client);
+    Nodo(Client client);
 
-    Sit();
+    Nodo();
 
-    Sit *getNext();
+    Nodo *getNext();
 
-    void setNext(Sit *next);
+    void setNext(Nodo *next);
 
-    Sit *getBack();
+    Nodo *getBack();
 
-    void setBack(Sit *back);
+    void setBack(Nodo *back);
 
-    Client &getData();
+    Client *getData();
 
     void setData(Client);
 
@@ -38,9 +38,11 @@ public:
 
     bool getStatus();
 
+    bool dataIsEmpty(Nodo *);
+
 private:
-    Sit *next;
-    Sit *back;
+    Nodo *next;
+    Nodo *back;
     Client data;
     int position;
     int cost;
@@ -49,4 +51,4 @@ private:
 };
 
 
-#endif //PROYECTO1CINE_SIT_H
+#endif //PROYECTO1CINE_NODO_H
