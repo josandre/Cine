@@ -7,17 +7,17 @@
 
 
 #include "Client.h"
-#include "Sit.h"
+#include "Nodo.h"
 
 class ListaDoblePreferencial {
 public:
     explicit ListaDoblePreferencial();
-    Sit getHead();
+    Nodo *getHead();
     int getlenght();
     void setLenght(int);
     void showSits();
     bool insertClient(Client, int);
-    void setHead(Sit *);
+    void setHead(Nodo *);
     bool validateSpot(int);
     void showSpotsAvailable();
     void setAvailable(int);
@@ -29,11 +29,10 @@ public:
 
 
 private:
-    void insertEnd(Client, int);
-    void insertSits(Sit);
+    void insertInLine(int answer, Client client);
     void initialize();
     int lenght = 10;
-    Sit *head;
+    Nodo *head;
     int available = 10;
     string zone;
 };

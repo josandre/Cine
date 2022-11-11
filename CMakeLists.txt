@@ -3,4 +3,4 @@ project(proyecto1Cine)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(proyecto1Cine main.cpp Controller/Client.cpp Model/Client.h Controller/ListaDoblePreferencial.cpp Model/ListaDoblePreferencial.h Controller/Sit.cpp Model/Sit.h Model/ColaEsperaPreferencial.cpp Model/ColaEsperaPreferencial.h)
+add_executable(proyecto1Cine main.cpp Controller/Client.cpp Model/Client.h Controller/ListaDoblePreferencial.cpp Model/ListaDoblePreferencial.h Controller/Nodo.cpp Model/Nodo.h Controller/ColaEsperaPreferencial.cpp Model/ColaEsperaPreferencial.h)
