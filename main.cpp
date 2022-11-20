@@ -23,6 +23,19 @@ Client CreateClient(){
     return client;
 }
 
+void addClientToLine(ColaEspera *cola, Client client){
+    cout << "There are not spots available, would you like to wait in line? (Yes/No)" << endl;
+    cout << "This is the line" << endl;
+    cola->showLine();
+    string answerLine;
+    cin >> answerLine;
+    if (!answerLine.empty() && (answerLine == "Yes" || answerLine == "yes" || answerLine == "YES") ){
+        cola->insertClient(client);
+    } else {
+        cout << "User was not added to the line" << endl;
+    }
+}
+
 void General(ListaGeneral *general, ColaEspera *colaGeneral){
     Client client = CreateClient();
     bool result = general->addClient(client);
@@ -30,16 +43,7 @@ void General(ListaGeneral *general, ColaEspera *colaGeneral){
     if(result){
         cout << "The reservation was successful" << endl;
     }else{
-        cout << "There are not spots available, would you like to wait in line? (Yes/No)" << endl;
-        cout << "This is the line" << endl;
-        colaGeneral->showLine();
-        string answer;
-        cin >> answer;
-        if(answer.empty() || answer != "Yes" || answer != "yes" || answer != "YES"){
-            cout << "User was not added to the line" << endl;
-        }else{
-            colaGeneral->insertClient(client);
-        }
+        addClientToLine(colaGeneral, client);
     }
 }
 
@@ -50,16 +54,7 @@ void Hall(PilaPasillo pila, ColaEspera *colaPasillo){
     if(result){
         cout << "The reservation was successful" << endl;
     } else{
-        cout << "There are not spots available, would you like to wait in line? (Yes/No)" << endl;
-        cout << "This is the line" << endl;
-        colaPasillo->showLine();
-        string answer;
-        cin >> answer;
-        if(answer.empty() || answer != "Yes" || answer != "yes" || answer != "YES"){
-            cout << "User was not added to the line" << endl;
-        }else{
-            colaPasillo->insertClient(client);
-        }
+        addClientToLine(colaPasillo, client);
     }
 }
 
@@ -80,18 +75,11 @@ void Preferencial(ListaDoblePreferencial preferencial, ColaEspera *colaPreferenc
         }
 
     }else {
-        cout << "There are not spots available, would you like to wait in line? (Yes/No)" << endl;
-        cout << "This is the line" << endl;
-        colaPreferencial->showLine();
-        string answerLine;
-        cin >> answerLine;
-        if (!answerLine.empty() && (answerLine == "Yes" || answerLine == "yes" || answerLine == "YES") ){
-            colaPreferencial->insertClient(client);
-        } else {
-            cout << "User was not added to the line" << endl;
-        }
+        addClientToLine(colaPreferencial, client);
     }
 }
+
+
 
 void Reserve(ListaDoblePreferencial preferencial, ColaEspera *colaPreferencial, PilaPasillo hall, ColaEspera *colaPasillo, ListaGeneral *general, ColaEspera *colaGeneral){
 

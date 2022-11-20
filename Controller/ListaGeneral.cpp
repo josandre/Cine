@@ -19,18 +19,20 @@ void ListaGeneral::setLength(int number) {
 
 bool ListaGeneral::addClient(Client client) {
     Nodo *newClient = new Nodo(client);
+    Nodo *aux = this->head;
     if(isFull()){
         return false;
     }
 
     if(this->head == nullptr){
         setHead(newClient);
-    }
+    }else{
 
-    // Esto esta mal, iterar e insertar al final. -5 puntos para gryffindor
-    if(!isFull()){
-        this->head->setNext(newClient);
-        setHead(newClient);
+        while (aux->getNext() != nullptr){
+            aux = aux->getNext();
+        }
+
+        aux->setNext(newClient);
     }
 
     setLength(this->length + 1);
