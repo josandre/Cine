@@ -47,11 +47,13 @@ void Nodo::setData(Client client) {
 
 Nodo::Nodo(Client data) {
     this->data = data;
-    this->status = true;
+    this->status = false;
+    this->next = nullptr;
 }
 
 Nodo::Nodo() {
-    this->status = true;
+    this->status = false;
+    this->next = nullptr;
 }
 
 bool Nodo::dataIsEmpty(Nodo *sit) {

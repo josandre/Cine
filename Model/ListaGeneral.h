@@ -15,10 +15,12 @@ public:
     explicit ListaGeneral();
     bool addClient(Client);
     void setHead(Nodo *);
+    Nodo *getHead();
     void mostrarLista();
     bool isFull();
     void setLength(int);
     int availableSpots();
+    bool searchClient(string);
 
 private:
 

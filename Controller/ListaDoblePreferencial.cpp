@@ -12,18 +12,35 @@ ListaDoblePreferencial::ListaDoblePreferencial() {
     this->zone = "preferential";
 }
 
+void ListaDoblePreferencial::setAvailable(int amount){
+    this->available = amount;
+}
+
+int ListaDoblePreferencial::getAvailable() {
+    return this->available;
+}
+
+
+Nodo *ListaDoblePreferencial::getHead() {
+    return this->head;
+}
+
+void ListaDoblePreferencial::setHead(Nodo *client) {
+    this->head = client;
+}
+
 void ListaDoblePreferencial::initialize() {
     int position = 9;
     setHead(new Nodo());
-    this->head->setPosition(position);
+    getHead()->setPosition(position);
     int acum = 1;
 
     while (acum < lenght){
         position --;
         Nodo *sit = new Nodo();
         sit->setPosition(position);
-        sit->setNext(this->head);
-        this->head->setBack(sit);
+        sit->setNext(getHead());
+        getHead()->setBack(sit);
         setHead(sit);
         acum ++;
 
@@ -57,21 +74,26 @@ bool ListaDoblePreferencial::showSpotsAvailable() {
     return true;
 }
 
-
-Nodo *ListaDoblePreferencial::getHead() {
-    return this->head;
+bool ListaDoblePreferencial::searchClient(string id) {
+    Nodo *aux = getHead();
+    while (aux != nullptr){
+        if(aux->getData()->getId() == id){
+            aux->setStatus(true);
+            return true;
+        }
+        aux = aux->getNext();
+    }
+    return false;
 }
 
-void ListaDoblePreferencial::setHead(Nodo *client) {
-    this->head = client;
-}
+
+
 
 bool ListaDoblePreferencial::insertClient(Client client, int position) {
     Nodo *aux = getHead();
     while (aux != nullptr){
         if(aux->getPosition() == position && validateSpot(position)){
             aux->setData(client);
-            aux->setStatus(false);
             setAvailable(getAvailable() - 1);
             return true;
         }
@@ -80,27 +102,10 @@ bool ListaDoblePreferencial::insertClient(Client client, int position) {
     return false;
 }
 
-void ListaDoblePreferencial::insertInLine(int answer, Client client) {//cuando la sala preferncial esta llena se llama esta funcion
-    ColaEspera  *espera = new ColaEspera();
-    Nodo *newNodo = new Nodo(client);
-
-    if(answer == 1 && getAvailable() == 0){
-        espera->insertClient(client);
-    }
-}
-
-void ListaDoblePreferencial::setAvailable(int amount){
-    this->available = amount;
-}
-
-int ListaDoblePreferencial::getAvailable() {
-    return this->available;
-}
-
 bool ListaDoblePreferencial::validateSpot(int postion) {
-    Nodo *aux = this->head;
+    Nodo *aux = getHead();
     while (aux != nullptr){
-        if(postion == aux->getPosition() && aux->getStatus()){
+        if(postion == aux->getPosition() && aux->getData()->getId() == ""){
             return true;
         }
         aux = aux->getNext();

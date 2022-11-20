@@ -25,12 +25,12 @@ public:
     int getAvailable();
     void showSpots();
     string getZone();
+    bool searchClient(string);
 
 
 
 
 private:
-    void insertInLine(int answer, Client client);
     void initialize();
     int lenght = 10;
     Nodo *head;
