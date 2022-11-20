@@ -3,7 +3,7 @@
 //
 
 #include "../Model/ListaDoblePreferencial.h"
-#include "../Model/ColaEsperaPreferencial.h"
+#include "../Model/ColaEspera.h"
 
 
 ListaDoblePreferencial::ListaDoblePreferencial() {
@@ -81,7 +81,7 @@ bool ListaDoblePreferencial::insertClient(Client client, int position) {
 }
 
 void ListaDoblePreferencial::insertInLine(int answer, Client client) {//cuando la sala preferncial esta llena se llama esta funcion
-    ColaEsperaPreferencial  *espera = new ColaEsperaPreferencial();
+    ColaEspera  *espera = new ColaEspera();
     Nodo *newNodo = new Nodo(client);
 
     if(answer == 1 && getAvailable() == 0){

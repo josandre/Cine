@@ -56,7 +56,10 @@
 				1,
 				3,
 				5,
-				7
+				7,
+				9,
+				11,
+				13
 			]
 		}
 	],
@@ -93,7 +96,10 @@
 				1,
 				3,
 				5,
-				7
+				7,
+				9,
+				11,
+				13
 			]
 		},
 		{
@@ -103,7 +109,10 @@
 				2,
 				4,
 				6,
-				8
+				8,
+				10,
+				12,
+				14
 			]
 		}
 	],
@@ -151,12 +160,45 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Controller/ColaEsperaPreferencial.cpp",
+			"path" : "Controller/ColaEspera.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Model/ColaEsperaPreferencial.h",
+			"path" : "Model/ColaEspera.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Controller/PilaPasillo.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Model/PilaPasillo.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Controller/Pila.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Model/Pila.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Controller/ListaGeneral.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Model/ListaGeneral.h",
 			"sourceGroupIndex" : 1
 		}
 	],
