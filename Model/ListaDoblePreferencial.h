@@ -9,6 +9,7 @@
 #include "Client.h"
 #include "Nodo.h"
 
+
 class ListaDoblePreferencial {
 public:
     explicit ListaDoblePreferencial();
@@ -19,7 +20,7 @@ public:
     bool insertClient(Client, int);
     void setHead(Nodo *);
     bool validateSpot(int);
-    void showSpotsAvailable();
+    bool showSpotsAvailable();
     void setAvailable(int);
     int getAvailable();
     void showSpots();

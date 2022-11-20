@@ -47,7 +47,6 @@ private:
     int position;
     int cost;
     bool status;
-
 };
 
 
