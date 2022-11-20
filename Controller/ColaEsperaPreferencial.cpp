@@ -3,6 +3,7 @@
 //
 
 #include "../Model/ColaEsperaPreferencial.h"
+
 ColaEsperaPreferencial::ColaEsperaPreferencial() {
     this->longitud = 0;
     this->front = nullptr;
