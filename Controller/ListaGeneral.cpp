@@ -7,7 +7,11 @@ ListaGeneral::ListaGeneral(){
     this->head = nullptr;
     this->length = 0;
     this->maxLength = 20;
-};
+}
+
+Nodo *ListaGeneral::getHead() {
+    return this->head;
+}
 
 void ListaGeneral::setHead(Nodo *head) {
     this->head = head;
@@ -20,6 +24,8 @@ void ListaGeneral::setLength(int number) {
 bool ListaGeneral::addClient(Client client) {
     Nodo *newClient = new Nodo(client);
     Nodo *aux = this->head;
+    newClient->setStatus(false);
+
     if(isFull()){
         return false;
     }
@@ -27,7 +33,6 @@ bool ListaGeneral::addClient(Client client) {
     if(this->head == nullptr){
         setHead(newClient);
     }else{
-
         while (aux->getNext() != nullptr){
             aux = aux->getNext();
         }
@@ -59,8 +64,18 @@ void ListaGeneral::mostrarLista() {
     }
 }
 
+bool ListaGeneral::searchClient(string id) {
+    Nodo *aux = getHead();
+    while (aux != nullptr){
+        if(aux->getData()->getId() == id){
+            aux->setStatus(true);
+            return true;
+        }
+        aux = aux->getNext();
+    }
+    return false;
+}
+
 int ListaGeneral::availableSpots() {
     return this->maxLength - this->length;
 }
-
-

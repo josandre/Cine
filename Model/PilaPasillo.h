@@ -7,6 +7,7 @@
 
 
 #include "Pila.h"
+#include "NodoPila.h"
 
 class PilaPasillo {
 public:
@@ -14,12 +15,14 @@ public:
     bool push(Client);
     int getLength();
     void setLength(int);
-    void setUp(Pila *);
+    void setUp(NodoPila *);
+    NodoPila *getUp();
     bool isFull();
-    int availableSpots();
+    bool searchClient(string);
+
 
 private:
-    Pila *top;
+    NodoPila *top;
     int Maxlength;
     int length;
 };

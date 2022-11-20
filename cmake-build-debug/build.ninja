@@ -94,6 +94,12 @@ build CMakeFiles/proyecto1Cine.dir/Controller/ListaGeneral.cpp.o: CXX_COMPILER__
   OBJECT_DIR = CMakeFiles/proyecto1Cine.dir
   OBJECT_FILE_DIR = CMakeFiles/proyecto1Cine.dir/Controller
 
+build CMakeFiles/proyecto1Cine.dir/Controller/NodoPila.cpp.o: CXX_COMPILER__proyecto1Cine_Debug /Users/jocselynaguilar/CLionProjects/proyecto1Cine/Controller/NodoPila.cpp || cmake_object_order_depends_target_proyecto1Cine
+  DEP_FILE = CMakeFiles/proyecto1Cine.dir/Controller/NodoPila.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++14
+  OBJECT_DIR = CMakeFiles/proyecto1Cine.dir
+  OBJECT_FILE_DIR = CMakeFiles/proyecto1Cine.dir/Controller
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target proyecto1Cine
@@ -102,7 +108,7 @@ build CMakeFiles/proyecto1Cine.dir/Controller/ListaGeneral.cpp.o: CXX_COMPILER__
 #############################################
 # Link the executable proyecto1Cine
 
-build proyecto1Cine: CXX_EXECUTABLE_LINKER__proyecto1Cine_Debug CMakeFiles/proyecto1Cine.dir/main.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/Client.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/ListaDoblePreferencial.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/Nodo.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/ColaEspera.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/PilaPasillo.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/Pila.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/ListaGeneral.cpp.o
+build proyecto1Cine: CXX_EXECUTABLE_LINKER__proyecto1Cine_Debug CMakeFiles/proyecto1Cine.dir/main.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/Client.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/ListaDoblePreferencial.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/Nodo.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/ColaEspera.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/PilaPasillo.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/Pila.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/ListaGeneral.cpp.o CMakeFiles/proyecto1Cine.dir/Controller/NodoPila.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk
   OBJECT_DIR = CMakeFiles/proyecto1Cine.dir
   POST_BUILD = :

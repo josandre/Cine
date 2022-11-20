@@ -10,12 +10,16 @@ PilaPasillo::PilaPasillo() {
     length = 0;
 }
 
-void PilaPasillo::setUp(Pila *fila) {
+void PilaPasillo::setUp(NodoPila *fila) {
     this->top = fila;
 }
 
 void PilaPasillo::setLength(int number) {
     this->length = number;
+}
+
+NodoPila *PilaPasillo::getUp() {
+    return this->top;
 }
 
 bool PilaPasillo::push(Client client) {
@@ -24,22 +28,33 @@ bool PilaPasillo::push(Client client) {
         return false;
     }
 
-    if(this->top == nullptr || this->top->isFull()){
-        Pila *fila = new Pila();
-        setUp(fila);
+    if(this->top == nullptr || this->top->getData()->isFull()){
+        Pila fila = Pila();
+        NodoPila *nodoPila = new NodoPila(fila);
+        setUp(nodoPila);
         setLength(this->length + 1);
     }
-
-    this->top->push(client);
+    this->top->getData()->push(client);
     return true;
 }
 
 bool PilaPasillo::isFull() {
-    return this->length == this->Maxlength && this->top->isFull();
+    return this->length == this->Maxlength && this->top->getData()->isFull();
 }
 
-int PilaPasillo::availableSpots() {
-    return this->Maxlength - this->length;
+bool PilaPasillo::searchClient(string id) {
+    NodoPila *aux = getUp();
+
+    while (aux != nullptr){
+        bool answer = aux->getData()->searchClient(id);
+        if(answer){
+            return true;
+        }
+
+        aux = aux->getNext();
+    }
+    return false;
 }
+
 
 

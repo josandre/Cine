@@ -14,6 +14,10 @@ void Pila::setUp(Nodo *newNodo) {
     this->up = newNodo;
 }
 
+Nodo *Pila::getUp() {
+    return this->up;
+}
+
 void Pila::setLength(int number) {
     this->length = number;
 }
@@ -34,4 +38,17 @@ bool Pila::push(Nodo client) {
 }
 bool Pila::isFull() {
    return this->length == this->Maxlength;
+}
+
+bool Pila::searchClient(string id) {
+    Nodo *aux = getUp();
+
+    while (aux != nullptr){
+        if(aux->getData()->getId() == id){
+            aux->setStatus(true);
+            return true;
+        }
+        aux = aux->getNext();
+    }
+    return false;
 }

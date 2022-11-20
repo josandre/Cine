@@ -47,9 +47,9 @@ void General(ListaGeneral *general, ColaEspera *colaGeneral){
     }
 }
 
-void Hall(PilaPasillo pila, ColaEspera *colaPasillo){
+void Hall(PilaPasillo *pila, ColaEspera *colaPasillo){
     Client client = CreateClient();
-    bool result = pila.push(client);
+    bool result = pila->push(client);
 
     if(result){
         cout << "The reservation was successful" << endl;
@@ -58,16 +58,16 @@ void Hall(PilaPasillo pila, ColaEspera *colaPasillo){
     }
 }
 
-void Preferencial(ListaDoblePreferencial preferencial, ColaEspera *colaPreferencial){
+void Preferencial(ListaDoblePreferencial *preferencial, ColaEspera *colaPreferencial){
     Client client = CreateClient();
 
-    bool spots = preferencial.showSpotsAvailable();
+    bool spots = preferencial->showSpotsAvailable();
     if(spots){
         cout << "These are the available spots" << endl;
         cout << "Please select one from the above list" << endl;
         int position;
         cin >> position;
-        bool result = preferencial.insertClient(client, position);
+        bool result = preferencial->insertClient(client, position);
         if(result){
             cout << "The reservation was successful" << endl;
         }else{
@@ -80,8 +80,54 @@ void Preferencial(ListaDoblePreferencial preferencial, ColaEspera *colaPreferenc
 }
 
 
+string askId(){
+    cout << "What is your id" << endl;
+    string id;
+    cin >> id;
+    return id;
+}
 
-void Reserve(ListaDoblePreferencial preferencial, ColaEspera *colaPreferencial, PilaPasillo hall, ColaEspera *colaPasillo, ListaGeneral *general, ColaEspera *colaGeneral){
+void payReserve(ListaDoblePreferencial *preferencial, PilaPasillo *hall, ListaGeneral *general){
+    cout << "Which place would you like to pay the reserve" << endl;
+    cout << "1. Preferential" << endl;
+    cout << "2. Hall" << endl;
+    cout << "3. General" << endl;
+    cout << "4. Exit " << endl;
+
+    int answer;
+    cin >> answer;
+    switch (answer) {
+        case 1:{
+
+            if(preferencial->searchClient(askId())){
+                cout << "Your reserve is paid, enjoy the function" << endl;
+            } else{
+                cout << "Your reserve was not found" << endl;
+            }
+            break;
+        }
+        case 2:{
+           if(hall->searchClient(askId())){
+               cout << "Your reserve is paid, enjoy the function" << endl;
+           }else{
+               cout << "Your reserve was not found" << endl;
+           }
+            break;
+        }
+        case 3:{
+            if(general->searchClient(askId())){
+                cout << "Your reserve is paid, enjoy the function" << endl;
+            } else{
+                cout << "Your reserve was not found" << endl;
+            }
+            break;
+        }
+    }
+}
+
+
+
+void Reserve(ListaDoblePreferencial *preferencial, ColaEspera *colaPreferencial, PilaPasillo *hall, ColaEspera *colaPasillo, ListaGeneral *general, ColaEspera *colaGeneral){
 
     cout << "Which place would you like to reserve" << endl;
     cout << "1. Preferential   10.000 colones" << endl;
@@ -93,7 +139,7 @@ void Reserve(ListaDoblePreferencial preferencial, ColaEspera *colaPreferencial, 
 
     switch (answer) {
         case 1:{
-                Preferencial(preferencial, colaPreferencial);
+            Preferencial(preferencial, colaPreferencial);
             break;
         }
 
@@ -114,17 +160,12 @@ void Reserve(ListaDoblePreferencial preferencial, ColaEspera *colaPreferencial, 
 
 }
 
-
-
-
-
-
 int main() {
 
     ColaEspera *colaPreferencial = new ColaEspera();
     ColaEspera *colaPasillo = new ColaEspera();
-    ListaDoblePreferencial preferencial = ListaDoblePreferencial();
-    PilaPasillo hall = PilaPasillo();
+    ListaDoblePreferencial *preferencial = new ListaDoblePreferencial();
+    PilaPasillo *hall = new PilaPasillo();
     ListaGeneral* general = new ListaGeneral();
     ColaEspera *colaGeneral = new ColaEspera();
     cout << "****Welcome to movies Sullivan****" << endl;
@@ -141,40 +182,35 @@ int main() {
     Client pClient0= Client("lady", "24");
 
 
-    /*
-    preferencial.insertClient(pClient, 1);
-    preferencial.insertClient(pClient2, 2);
-    preferencial.insertClient(pClient3, 3);
-    preferencial.insertClient(pClient4, 4);
-    preferencial.insertClient(pClient5, 5);
-    preferencial.insertClient(pClient6, 6);
-    preferencial.insertClient(pClient7, 7);
-    preferencial.insertClient(pClient8, 8);
-    preferencial.insertClient(pClient9, 9);
-    preferencial.insertClient(pClient0, 0);
-     */
+    preferencial->insertClient(pClient, 1);
+    preferencial->insertClient(pClient2, 2);
+    preferencial->insertClient(pClient3, 3);
+    preferencial->insertClient(pClient4, 4);
+    preferencial->insertClient(pClient5, 5);
+    preferencial->insertClient(pClient6, 6);
+    preferencial->insertClient(pClient7, 7);
+    preferencial->insertClient(pClient8, 8);
+    preferencial->insertClient(pClient9, 9);
 
-    /*
-    hall.push(pClient);
-    hall.push(pClient2);
-    hall.push(pClient3);
-    hall.push(pClient4);
-    hall.push(pClient5);
-    hall.push(pClient6);
-    hall.push(pClient7);
-    hall.push(pClient8);
-    hall.push(pClient9);
-    hall.push(pClient0);
-    hall.push(pClient2);
-    hall.push(pClient3);
-    hall.push(pClient4);
-    hall.push(pClient5);
-    hall.push(pClient6);
-    hall.push(pClient7);
-    hall.push(pClient8);
-    hall.push(pClient9);
-    hall.push(pClient0);
-     */
+    hall->push(pClient);
+    hall->push(pClient2);
+    hall->push(pClient3);
+    hall->push(pClient4);
+    hall->push(pClient5);
+    hall->push(pClient6);
+    hall->push(pClient7);
+    hall->push(pClient8);
+    hall->push(pClient9);
+    hall->push(pClient0);
+    hall->push(pClient2);
+    hall->push(pClient3);
+    hall->push(pClient4);
+    hall->push(pClient5);
+    hall->push(pClient6);
+    hall->push(pClient7);
+    hall->push(pClient8);
+    hall->push(pClient9);
+    hall->push(pClient0);
 
     general->addClient(pClient);
     general->addClient(pClient2);
@@ -212,7 +248,8 @@ int main() {
             }
 
             case 2:{
-
+                payReserve(preferencial,hall,general);
+                break;
             }
             case 3:
                 exit = true;

@@ -18,7 +18,9 @@ public:
     int getLength();
     void setLength(int);
     void setUp(Nodo *);
+    Nodo *getUp();
     bool isFull();
+    bool searchClient(string);
 
 private:
     Nodo *up;
