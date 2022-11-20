@@ -2,23 +2,23 @@
 // Created by Jocselyn Aguilar on 11/11/22.
 //
 
-#include "../Model/ColaEsperaPreferencial.h"
+#include "../Model/ColaEspera.h"
 
-ColaEsperaPreferencial::ColaEsperaPreferencial() {
+ColaEspera::ColaEspera() {
     this->longitud = 0;
     this->front = nullptr;
     this->final = nullptr;
 }
 
-Nodo *ColaEsperaPreferencial::getFinal() {
+Nodo *ColaEspera::getFinal() {
     return this->final;
 }
 
-void ColaEsperaPreferencial::setFinal(Nodo *newFinal) {
+void ColaEspera::setFinal(Nodo *newFinal) {
     this->final = newFinal;
 }
 
-void ColaEsperaPreferencial::insertClient(Client client) {
+void ColaEspera::insertClient(Client client) {
     Nodo *newClient = new Nodo(client);
 
     if(this->front == nullptr){
@@ -33,7 +33,7 @@ void ColaEsperaPreferencial::insertClient(Client client) {
     }
 }
 
-void ColaEsperaPreferencial::showLine() {
+void ColaEspera::showLine() {
     Nodo *aux = this->front;
 
     if(this->front == nullptr){
@@ -49,15 +49,15 @@ void ColaEsperaPreferencial::showLine() {
 
 
 
-Nodo *ColaEsperaPreferencial::getFront() {
+Nodo *ColaEspera::getFront() {
     return this->front;
 }
 
-void ColaEsperaPreferencial::setFront(Nodo *nodo) {
+void ColaEspera::setFront(Nodo *nodo) {
     this->front = nodo;
 }
 
-void ColaEsperaPreferencial::atender() {
+void ColaEspera::atender() {
     Nodo *aux = getFront();
     if(aux != nullptr){
         setFront(getFront()->getNext());

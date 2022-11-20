@@ -2,15 +2,15 @@
 // Created by Jocselyn Aguilar on 11/11/22.
 //
 
-#ifndef PROYECTO1CINE_COLAESPERAPREFERENCIAL_H
-#define PROYECTO1CINE_COLAESPERAPREFERENCIAL_H
+#ifndef PROYECTO1CINE_COLAESPERA_H
+#define PROYECTO1CINE_COLAESPERA_H
 
 
 #include "Nodo.h"
 
-class ColaEsperaPreferencial {
+class ColaEspera {
 public:
-    explicit ColaEsperaPreferencial();
+    explicit ColaEspera();
     void insertClient(Client);//lista simple
     void showLine();
     void atender();
@@ -27,4 +27,4 @@ private:
 };
 
 
-#endif //PROYECTO1CINE_COLAESPERAPREFERENCIAL_H
+#endif //PROYECTO1CINE_COLAESPERA_H

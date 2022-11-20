@@ -4,9 +4,6 @@
 
 #include "../Model/Nodo.h"
 
-
-
-
 Nodo *Nodo::getNext()  {
     return this->next;
 }
